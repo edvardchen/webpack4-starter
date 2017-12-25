@@ -1,0 +1,20 @@
+{
+  "name": "y",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.code.oa.com/edvardchen/isomorphic-parcel-starter.git"
+  },
+  "keywords": [
+    "starter",
+    "parcel",
+    "isomorphic"
+  ],
+  "author": "edvardchen",
+  "license": "ISC"
+}
