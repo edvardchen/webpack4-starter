@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch-client": "cross-env BABEL_ENV=browser parcel src/client/index.html",
-    "build": "parcel build src/index.html",
+    "build-client": "parcel build src/index.html",
+    "build-server": "cross-env BABEL_ENV=node babel src -d dist --ignore client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "author": "edvardchen",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
