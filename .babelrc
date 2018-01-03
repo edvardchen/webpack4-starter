@@ -23,6 +23,9 @@
       ]
     },
     "node": {
+      "plugins": [
+        "dynamic-import-node"
+      ],
       "presets": [
         [
           "env",
