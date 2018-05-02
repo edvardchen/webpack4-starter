@@ -4,9 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "watch-client": "cross-env BABEL_ENV=browser webpack --watch --mode=development src/client.js",
-    "build-client": "cross-env BABEL_ENV=browser webpack --mode=production src/client.js",
-    "build-server": "cross-env BABEL_ENV=node babel src -d dist --ignore client",
+    "watch": "cross-env BABEL_ENV=browser webpack-dev-server --open --mode=development",
+    "build": "rimraf dist && cross-env BABEL_ENV=browser webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "husky": {
