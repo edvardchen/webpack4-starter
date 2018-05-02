@@ -1,11 +1,6 @@
 {
-  "presets": [
-    "react",
-    "flow"
-  ],
-  "plugins": [
-    "transform-object-rest-spread"
-  ],
+  "presets": ["react", "flow"],
+  "plugins": ["transform-object-rest-spread"],
   "env": {
     "browser": {
       "presets": [
@@ -13,19 +8,14 @@
           "env",
           {
             "targets": {
-              "browsers": [
-                "Last 4 versions",
-                "iOS 7"
-              ]
+              "browsers": ["Last 4 versions", "iOS 7"]
             }
           }
         ]
       ]
     },
     "node": {
-      "plugins": [
-        "dynamic-import-node"
-      ],
+      "plugins": ["dynamic-import-node"],
       "presets": [
         [
           "env",
