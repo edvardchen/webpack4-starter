@@ -2,10 +2,10 @@
   "name": "isomorphic-parcel-starter",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "watch-client": "cross-env BABEL_ENV=browser parcel src/client/index.html",
-    "build-client": "parcel build src/index.html",
+    "watch-client": "cross-env BABEL_ENV=browser webpack --watch --mode=development src/client.js",
+    "build-client": "cross-env BABEL_ENV=browser webpack --mode=production src/client.js",
     "build-server": "cross-env BABEL_ENV=node babel src -d dist --ignore client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,7 +15,7 @@
   },
   "keywords": [
     "starter",
-    "parcel",
+    "webpack",
     "isomorphic"
   ],
   "author": "edvardchen",
@@ -29,7 +29,8 @@
     "babel-preset-react": "^6.24.1",
     "cross-env": "^5.1.3",
     "node-sass": "^4.9.0",
-    "parcel-bundler": "^1.7.1"
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2"
   },
   "dependencies": {
     "react": "^16.2.0",
