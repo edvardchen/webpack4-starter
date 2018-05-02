@@ -1,6 +1,9 @@
 import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 export default (env, argv) => {
   const DEV = argv.mode === 'development';
@@ -8,19 +11,49 @@ export default (env, argv) => {
     entry: {
       app: './src/client.js'
     },
+    cache: DEV,
     devtool: DEV && 'eval',
     devServer: {
       contentBase: './dist',
       hot: true
     },
-    plugins: [
-      new HtmlWebpackPlugin(),
-      new webpack.NamedModulesPlugin(),
-      DEV && new webpack.HotModuleReplacementPlugin()
-    ].filter(Boolean),
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist')
+    },
+    optimization: {
+      minimizer: [
+        new UglifyJSPlugin({
+          cache: true,
+          parallel: true
+          // sourceMap: true // set to true if you want JS source maps
+        }),
+        new OptimizeCSSAssetsPlugin({})
+      ]
+    },
+    plugins: [
+      new HtmlWebpackPlugin(),
+      new webpack.NamedModulesPlugin(),
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: DEV ? '[name].css' : '[name].[hash].css',
+        chunkFilename: DEV ? '[id].css' : '[id].[hash].css'
+      }),
+      DEV && new webpack.HotModuleReplacementPlugin()
+    ].filter(Boolean),
+    module: {
+      rules: [
+        {
+          test: /\.s?[ac]ss$/,
+          use: [
+            DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ]
+        }
+      ]
     }
   };
   return config;
