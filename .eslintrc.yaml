@@ -1,1 +1,3 @@
-extends: prettier # turn off formatting rules
+extends:
+  - airbnb
+  - prettier # turn off formatting rules
