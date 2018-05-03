@@ -3,6 +3,8 @@ import React from 'react';
 
 import { render } from 'react-dom';
 
+import('./App');
+
 /* global window */
 const { document } = window;
 const root = document.createElement('div');
