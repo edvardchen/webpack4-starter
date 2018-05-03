@@ -1,3 +1,7 @@
 extends:
   - airbnb
-  - prettier # turn off formatting rules
+  - prettier
+rules:
+  react/jsx-filename-extension:
+    - jsx
+    - js

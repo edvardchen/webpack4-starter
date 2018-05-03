@@ -22,6 +22,7 @@ export default (env, argv) => {
       path: path.resolve(__dirname, 'dist')
     },
     optimization: {
+      splitChunks: {},
       minimizer: [
         new UglifyJSPlugin({
           cache: true,
@@ -52,6 +53,10 @@ export default (env, argv) => {
             'postcss-loader',
             'sass-loader'
           ]
+        },
+        {
+          test: /\.(js|jsx)$/,
+          use: 'babel-loader'
         }
       ]
     }
