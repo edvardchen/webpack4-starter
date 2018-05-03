@@ -19,7 +19,7 @@ export default (env, argv) => {
       hot: true
     },
     output: {
-      filename: '[name].bundle.js',
+      filename: DEV ? '[name].js' : '[name].[chunkhash].js',
       path: path.resolve(__dirname, 'dist')
     },
     optimization: {
@@ -40,7 +40,8 @@ export default (env, argv) => {
         cache: true,
         meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
       }),
-      new webpack.NamedModulesPlugin(),
+      // NamedModulesPlugin for HMR
+      DEV ? new webpack.NamedModulesPlugin() : new webpack.HashedModuleIdsPlugin(),
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
