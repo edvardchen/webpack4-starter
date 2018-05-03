@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export default (env, argv) => {
   const DEV = argv.mode === 'development';
@@ -22,7 +23,9 @@ export default (env, argv) => {
       path: path.resolve(__dirname, 'dist')
     },
     optimization: {
-      splitChunks: {},
+      splitChunks: {
+        chunks: 'all'
+      },
       minimizer: [
         new UglifyJSPlugin({
           cache: true,
@@ -41,7 +44,7 @@ export default (env, argv) => {
         filename: DEV ? '[name].css' : '[name].[hash].css',
         chunkFilename: DEV ? '[id].css' : '[id].[hash].css'
       }),
-      DEV && new webpack.HotModuleReplacementPlugin()
+      DEV ? new webpack.HotModuleReplacementPlugin() : new BundleAnalyzerPlugin()
     ].filter(Boolean),
     module: {
       rules: [
