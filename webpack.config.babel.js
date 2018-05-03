@@ -36,7 +36,10 @@ export default (env, argv) => {
       ]
     },
     plugins: [
-      new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        cache: true,
+        meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
+      }),
       new webpack.NamedModulesPlugin(),
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
@@ -59,6 +62,7 @@ export default (env, argv) => {
         },
         {
           test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
           use: 'babel-loader'
         }
       ]
