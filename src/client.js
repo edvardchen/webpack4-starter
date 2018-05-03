@@ -1,8 +1,11 @@
-/*
- * @Author: edvardchen
- * @Date: 2018-05-02 10:57:45
- * @Last Modified by: edvardchen
- * @Last Modified time: 2018-05-02 10:58:20
- */
+// @flow
+import React from 'react';
 
-document.body.innerText = 'Hello World';
+import { render } from 'react-dom';
+
+/* global window */
+const { document } = window;
+const root = document.createElement('div');
+root.id = 'react-root';
+document.body.appendChild(root);
+render(<p>Hello World!</p>, root);
