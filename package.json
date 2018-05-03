@@ -10,7 +10,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "flow status && lint-staged"
     }
   },
   "lint-staged": {
@@ -19,8 +19,7 @@
       "git add"
     ],
     "*.js": [
-      "eslint",
-      "flow status"
+      "eslint"
     ]
   },
   "repository": {
