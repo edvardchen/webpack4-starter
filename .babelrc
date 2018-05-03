@@ -1,31 +1,15 @@
 {
-  "presets": ["react", "flow"],
-  "plugins": ["transform-object-rest-spread", "transform-class-properties"],
-  "env": {
-    "browser": {
-      "presets": [
-        [
-          "env",
-          {
-            "targets": {
-              "browsers": ["Last 4 versions", "iOS 7"]
-            }
-          }
-        ]
-      ]
-    },
-    "node": {
-      "plugins": ["dynamic-import-node"],
-      "presets": [
-        [
-          "env",
-          {
-            "targets": {
-              "node": "8.11.1"
-            }
-          }
-        ]
-      ]
-    }
-  }
+  "presets": [
+    "react",
+    "flow",
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["Last 4 versions", "iOS 7"]
+        }
+      }
+    ]
+  ],
+  "plugins": ["transform-object-rest-spread", "transform-class-properties"]
 }
