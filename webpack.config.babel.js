@@ -40,6 +40,8 @@ export default (env, argv) => {
         cache: true,
         meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
       }),
+      // non-numerical chunk name
+      new webpack.NamedChunksPlugin(),
       // NamedModulesPlugin for HMR
       DEV ? new webpack.NamedModulesPlugin() : new webpack.HashedModuleIdsPlugin(),
       new MiniCssExtractPlugin({
