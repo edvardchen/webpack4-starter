@@ -5,6 +5,7 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import LodashPlugin from 'lodash-webpack-plugin';
 
 export default (env, argv) => {
   const DEV = argv.mode === 'development';
@@ -36,6 +37,7 @@ export default (env, argv) => {
       ]
     },
     plugins: [
+      new LodashPlugin(),
       new HtmlWebpackPlugin({
         cache: true,
         meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
