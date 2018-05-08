@@ -69,6 +69,23 @@ export default (env, argv) => {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: 'babel-loader'
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 5120 // 5k
+              }
+            },
+            {
+              loader: 'image-webpack-loader',
+              options: {
+                bypassOnDebug: true
+              }
+            }
+          ]
         }
       ]
     }
